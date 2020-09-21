@@ -17,12 +17,10 @@ export default {
     }
     
     if (layoutsError) return;
-    
-    const categories = site.categories.filter(c => !c.isUncategorizedCategory);
     const parentCategories = [];
     const childCategories = {};
 
-    categories.forEach(function(c) {
+    site.categories.forEach(function(c) {
       let parent = c.parentCategory;
       if (parent) {
         let siblings = childCategories[parent.slug] || []

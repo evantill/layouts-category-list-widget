@@ -30,7 +30,12 @@ export default layouts.createLayoutsWidget('category-list', {
     const excluded = settings.excluded_categories.split('|');
     
     if (!parentCategories) return '';
-    
+
+    if(settings.exclude_uncategorized){
+      let uncategorizedSlug = parentCategories.filter(c => c.isUncategorizedCategory)[0].slug;
+      excluded.push(uncategorizedSlug);
+    }
+
     let categoryList = parentCategories.filter(c => {
       return excluded.indexOf(c.slug) === -1;
     }).map(parent => {
