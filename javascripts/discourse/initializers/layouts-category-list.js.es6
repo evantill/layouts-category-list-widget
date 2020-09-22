@@ -19,8 +19,9 @@ export default {
     if (layoutsError) return;
     const parentCategories = [];
     const childCategories = {};
+    const categories = site.categories || [];
 
-    site.categories.forEach(function(c) {
+    categories.forEach(function(c) {
       let parent = c.parentCategory;
       if (parent) {
         let siblings = childCategories[parent.slug] || []
